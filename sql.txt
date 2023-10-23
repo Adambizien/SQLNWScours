@@ -1,0 +1,31 @@
+CREATE DATABASE `annuaireNWS`;
+
+USE `annuaireNWS`;
+
+CREATE TABLE formation (
+    id_formation INT PRIMARY KEY AUTO_INCREMENT,
+    nom_formation VARCHAR(255),
+);
+
+
+CREATE TABLE `listUser` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `surname` varchar(100) NOT NULL,
+  `name` varchar(100) NOT NULL,
+  `birthday` date NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `phone` varchar(100) NOT NULL,
+  `address` varchar(300) DEFAULT NULL,
+  `postalcode` varchar(10) DEFAULT NULL,
+  `city` varchar(100) DEFAULT NULL,
+  `description` text,
+  `formation_id` int DEFAULT NULL,
+  PRIMARY KEY (`id`)
+  );
+
+ALTER TABLE formation
+ADD formation_id INT NOT NULL,
+ADD FOREIGN KEY (formation_id) REFERENCES formation(id_formation);
+
+INSERT INTO formation (id_formation, nom_formation, colonne3, ...)
+VALUES (1 , 'Web marketing' ),(2, 'Communication graphique' ),(3, 'Développement web' ),(4,'Community Management');
